@@ -1,1 +1,1 @@
-# HTML
+Repositório criado com o intuito de armazenar atividades repassadas pelo professor em aula, e também para a avaliação de habilidades e técnicas.
