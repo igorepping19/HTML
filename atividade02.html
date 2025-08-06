@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade do dia 05/08/2025</title>
+    <link rel="icon" type="icon" href="icon.png">
     <style>
 
         body {
@@ -13,7 +14,8 @@
 
         h1,
         h2,
-        h3 {
+        h3,
+        h4 {
             font-family: 'Times New Roman', Times, serif;
             text-align: center;
         }
@@ -22,16 +24,40 @@
             text-align: center;
         }
 
-        input  {
-            background-color: rgb(152, 193, 226);
-            border-radius: 5px;
+        .campos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        button {
-            border-radius: 5px;
+        .campos input  {
+            background-color: aquamarine;
+            border-radius: 20px;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button button {
+            border-radius: 20px;
             background-color: blue;
         }
 
+        .tabela {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .tabela table {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+        }
+
+        .imagem {
+            text-align: center;
+        }
 
     </style>
 </head>
@@ -58,8 +84,10 @@
                 <div class="campos">
                     <h3>Criação de campos para cadastros</h3>
                     <input type="text" id="nome" placeholder="Digite seu Nome:">
-                    <input type="text" id="dataNascimento" placeholder="Digite sua Data de Nascimento:">
+                    <input type="text" id="dataNascimento" placeholder="Data de Nascimento:">
                     <input type="email" id="email" placeholder="Digite seu E-Mail:">
+                </div>
+                <div class="button">
                     <button onclick="realizarCadastro ()">Cadastrar</button>
                 </div>
                 <div class="tabela">
@@ -76,6 +104,10 @@
 
                         </tbody>
                     </table>
+                </div>
+                <div class="imagem">
+                    <h4>Adição de imagem na atividade</h4>
+                    <img src="html.png" alt="Imagem Logo Html">
                 </div>
             </div>
         </section>
