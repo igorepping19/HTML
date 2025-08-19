@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade do dia 05/08/2025</title>
+    <link rel="icon" type="icon" href="icon.png">
+    <style>
+
+        body {
+            background-color: gray;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .campos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .campos input  {
+            background-color: aquamarine;
+            border-radius: 20px;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button button {
+            border-radius: 20px;
+            background-color: blue;
+        }
+
+        .tabela {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .tabela table {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+        }
+
+        .imagem {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Atividade Complementar</h1>
+        </div>
+    </header>
+
+    <main>
+        <section id="boasVindas">
+            <div class="treino">
+                <div class="apresentacao">
+                    <h2>
+                        Seja Bem-Vindo!!!
+                    </h2>
+                    <p>
+                        Desejo as boas vindas a todos. Essa página é especificamente para treinar conteudo repassado em aula.
+                        Fique a seguir com alguns exemplos:
+                    </p>
+                </div>
+                <div class="campos">
+                    <h3>Criação de campos para cadastros</h3>
+                    <input type="text" id="nome" placeholder="Digite seu Nome:">
+                    <input type="text" id="dataNascimento" placeholder="Data de Nascimento:">
+                    <input type="email" id="email" placeholder="Digite seu E-Mail:">
+                </div>
+                <div class="button">
+                    <button onclick="realizarCadastro ()">Cadastrar</button>
+                </div>
+                <div class="tabela">
+                    <h3>A seguir tentativa de criar uma tabela:</h3>
+                    <table id="listaCadastros">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data Nascimento</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="imagem">
+                    <h4>Adição de imagem na atividade</h4>
+                    <img src="html.png" alt="Imagem Logo Html">
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+
+        let db;
+
+        const request = indexedDB.open("CadastroDB", 1);
+
+        request.onupgradeneeded = function (event) {
+            const db = event.target.result; 
+
+            if (!db.objectStoreNames.contains("cadastro")) {
+                db.createObjectStore("cadastro", { keyPath: "id", autoIncrement: true });
+            }
+        };
+
+        request.onsuccess = function (event) {
+            db = event.target.result; // Armazena a referência ao banco de dados
+             listarCadastros();
+        };
+
+        request.onerror = function () {
+            console.error("Erro ao abrir o banco de dados.");
+        };
+
+        function realizarCadastro() {
+
+            if (!db) {
+                alert("Banco de dados não carregado ainda. Tente novamente.");
+                return;
+            }
+
+            const nome = document.getElementById("nome").value.trim();
+            const dataNascimento= document.getElementById("dataNascimento").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if (!nome || !dataNascimento || !email) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+            const transaction = db.transaction(["cadastro"], "readwrite");
+            const store = transaction.objectStore("cadastro");
+
+            const pessoa = { nome, dataNascimento, email };
+
+            const request = store.add(pessoa);
+
+            request.onsuccess = function () {
+                listarCadastros();
+                document.getElementById("nome").value = "";
+                document.getElementById("dataNascimento").value = "";
+                document.getElementById("email").value = "";
+            };
+
+            request.onerror = function () {
+                alert("Erro ao cadastrar.");
+            };
+        }
+        function listarCadastros() {
+            
+            if (!db) {
+                console.warn("Banco de dados ainda não carregado.");
+                return;
+            }
+
+            const transaction = db.transaction(["cadastro"], "readonly");
+            const store = transaction.objectStore("cadastro");
+
+            const request = store.getAll();
+
+           
+            request.onsuccess = function () {
+                const tbody = document.querySelector("#listaCadastros tbody");
+                tbody.innerHTML = ""; 
+
+                request.result.forEach(pessoa => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${pessoa.nome}</td>
+                            <td>${pessoa.dataNascimento}</td>
+                            <td>${pessoa.email}</td>
+                        </tr>`;
+                });
+            };
+        }
+    </script>
+</body>
+</html>
