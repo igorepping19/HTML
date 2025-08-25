@@ -1,0 +1,125 @@
+body {
+    background-color: #F8F9FA;
+}
+
+/* Estilos para o cabeçalho */
+header.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha o conteúdo ao topo do cabeçalho */
+    padding: 20px;
+    border-bottom: 1px solid #ccc; /* Adiciona uma linha para separar o cabeçalho do restante da página */
+    background-color: #343A40;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Estilos para o container do cabeçalho */
+#cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente o conteúdo */
+    width: 100%; /* Ocupa a largura total para centralizar */
+    order: 1;
+}
+
+/* Estilos para a logo */
+#logo {
+    order: 0; /* Move a logo para a esquerda */
+}
+
+#logo img {
+    max-height: 100px;
+}
+
+main {
+    /* Empurra o conteúdo para baixo, criando espaço para o cabeçalho fixo */
+    margin-top: 150px;
+}
+
+/* Estilos para os links de redes sociais */
+.redesSociais {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+    background-color: #1a1a1a; /* Fundo escuro */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 10px; /* Espaço interno */
+}
+
+.redesSociais a img {
+    height: 50px;
+}
+
+/* Estilos para o menu de navegação */
+.menu ul {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* <-- Este comando coloca os itens LADO A LADO */
+    gap: 10px; /* Adiciona 10px de espaço entre cada item */
+}
+
+.menu ul li a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: #fff; /* Cor do texto do botão */
+    background-color: #007BFF; /* Cor de fundo do botão */
+    padding: 10px 20px; /* Espaço interno para dar a aparência de botão */
+    border-radius: 5px; /* Bordas levemente arredondadas */
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Transição suave para o efeito hover */
+}
+.menu ul li a:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+}
+
+main #sobre .apresentacao {
+    gap: 20px; /* Espaço entre a imagem e o texto */
+    padding: 20px;
+
+}
+.sobreMim {
+    display: flex;
+    justify-content: space-between; /* Alinha o primeiro item à esquerda e o último à direita */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.sobreMim img {
+    border-radius: 70%; /* Bordas arredondadas na imagem */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave na imagem */
+    width: 450px; /* largura da imagem */
+    height: 600px; /* altura da imagem */
+}
+.apresentacao p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: center; /* Centraliza o texto */
+    color: #333;
+}
+
+main #atividade .atividadeRepasada {
+    gap: 20px; /* Espaço entre a imagem e o texto */
+    padding: 20px;
+}
+
+.imagemAtividade {
+    gap: 20px; /* Adiciona 20px de espaço entre a imagem e o parágrafo */
+    display: flex;
+    justify-content: space-between; /* Alinha o primeiro item à esquerda e o último à direita */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.imagemAtividade img {
+    width: 600px; /* largura da imagem */
+    height: 450px; /* altura da imagem */
+}
+
+footer {
+    background-color:#343A40; /* Fundo escuro */
+    color: white; /* Cor do texto */
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
